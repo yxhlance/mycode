@@ -1,0 +1,12 @@
+<ion-view view-title="热点详情">
+    <ion-content>
+        <!--
+        用加载指示器优化页面，等到滑轮到底时再加载
+        -->
+        <!-- 居中的是 加载指示器里的那个 加载圈-->
+        <div ng-if="showLoading" style="text-align:center">
+            <ion-spinner></ion-spinner>
+        </div>
+        <div ng-if="!showLoading" class="hotsDetailHtml" ng-bind-html="hotsDetailData"></div>
+    </ion-content>
+</ion-view>

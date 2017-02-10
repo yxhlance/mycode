@@ -1,0 +1,65 @@
+/*首页*/
+/* 自适应宽度*/
+.home-slidebox ion-slide img{
+    width:100%;
+}
+.slider-pager{
+    bottom:10px;
+}
+/* 小圆点的样式 */
+.slider-pager .slider-pager-page{
+    width:35px;
+    font-size:2px;
+}
+
+.col{
+    text-align:center;
+    font-size:16px;
+}
+.col div i{
+    font-size:28px;
+}
+.col1{
+    height:120px;
+}
+.col2{
+    height:60px;
+}
+
+
+
+
+/*热点*/
+.hots-scroll{
+    width:100%;
+    overflow-x:hidden !important;
+}
+
+.hots-buttonbar{
+    width:520px;
+}
+
+.hots-scroll .hots-buttonbar a{
+    color:#000;
+}
+
+.button-bar .button-select{
+    border-bottom: 10px solid #6422ff;
+    border-radius:0px;
+}
+
+/*热点详情*/
+.hotsDetailHtml img{
+     max-width:90%;
+}
+
+/*社区*/
+
+
+/*我的*/
+.login{
+    text-align: center;
+}
+.login img{
+    border-radius:5px;
+}

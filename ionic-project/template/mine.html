@@ -1,0 +1,42 @@
+<ion-view view-title="我">
+    <ion-content>
+        <ion-list>
+            <ion-item class="login" href="#/tab/login.html">
+                <img src="img/commentfailure.png" class="avatar">
+                <br>
+                <p ng-if="!userInfo">立即登录</p>
+                <p ng-if="userInfo">{{ userInfo.username }}</p>
+            </ion-item>
+        </ion-list>
+
+        <div class="button-bar bar-light">
+            <a class="button icon-left">
+                <i class="icon ion-android-star-outline"></i>
+                收藏
+            </a>
+            <a class="button icon-left">
+                <i class="icon ion-email"></i>
+                消息
+            </a>
+        </div>
+
+        <ion-list>
+            <ion-item class="item-divider"></ion-item>
+            <!-- 开关-->
+            <ion-toggle class="toggle-small">显示文章图片</ion-toggle>
+            <ion-item class="item-divier">关于</ion-item>
+            <ion-item>
+                当前版本
+                <span class="item-mote">v2.2</span>
+            </ion-item>
+            <ion-item>
+                意见反馈
+                <span class="item-note">Email:phonegap100@qq.com</span>
+            </ion-item>
+            <ion-item>关于作者</ion-item>
+            <ion-item onclick="window.open('http://phonegap100.com','_blank','location=yes')">
+                关于phonegap中文网
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

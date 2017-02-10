@@ -1,0 +1,30 @@
+<ion-view view-title="热点">
+    <div class="bar bar-subheader">
+        <ion-scroll class="hots-scroll" direction="x" scrollbar-x="false">
+            <div class="button-bar hots-buttonbar">
+                <a class="button button-clear button-select" ng-click="selectItem(0,20)">资讯</a>
+                <a class="button button-clear" ng-click="selectItem(1,25)">杂谈</a>
+                <a class="button button-clear" ng-click="selectItem(2,26)">互联网</a>
+                <a class="button button-clear" ng-click="selectItem(3,27)">财经</a>
+                <a class="button button-clear" ng-click="selectItem(4,28)">游戏</a>
+                <a class="button button-clear" ng-click="selectItem(5,29)">体育</a>
+                <a class="button button-clear" ng-click="selectItem(6,29)">军事</a>
+            </div>
+        </ion-scroll>
+    </div>
+
+    <ion-content class="has-subheader">
+
+        <!-- 下拉刷新  on-refresh是在拉的时候请求文件-->
+        <ion-refresher on-refresh="s()"></ion-refresher>
+
+        <ion-list>
+            <ion-item class="item-thumbnail-left" ng-repeat="x in hotsData" href="#/tab/hotsDetail/{{ x.aid }}">
+                 <!--ng-if 进行判断-->
+                <img ng-if="x.pic" ng-src="{{ imgurl }}{{ x.pic }}" alt="">
+                <img ng-if="!x.pic" ng-src="img/ionic.png" alt="">
+                <h3>{{ x.title }}</h3>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

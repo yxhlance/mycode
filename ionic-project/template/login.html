@@ -1,0 +1,19 @@
+<!-- chrishu a123456789 -->
+<ion-view view-title="首页">
+    <ion-content>
+        <ion-list class="list-inset">
+            <ion-item class="item-input">
+                <span class="item-label">用户名</span>
+                <!-- user.username user.userpassword 是对象 -->
+                <input type="text" ng-model="user.username">
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="item-label">密码</span>
+                <input type="text" ng-model="user.password">
+            </ion-item>
+        </ion-list>
+        <div class="padding">
+            <a class="button button-block button-assertive" ng-click="onlogin()">登录</a>
+        </div>
+    </ion-content>
+</ion-view>
