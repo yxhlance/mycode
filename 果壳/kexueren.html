@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .cont-wid{
+        padding:0;
+    }
+    li{
+        list-style: none;
+    }
+    a:hover{
+        text-decoration:none;
+    }
+    /* 第一条导航 */
+    .science-wrap-navfirst{
+        width:100%;
+        /*-ms-text-overflow: ellipsis;*/
+        /*text-overflow: ellipsis;*/
+        /*white-space:nowrap;*/
+        position: fixed;
+        height:42px;
+        z-index:99;
+    }
+    .science-navfirst{
+        line-height: 39px;
+        padding:0 15px;
+        font-size:12px;
+        border-bottom:3px solid #85C155;
+        background:#4C4C4C;
+    }
+    .science-nav{
+        float: left;
+        height:38px;
+    }
+    .science-nav ul{
+        float: left;
+    }
+    .science-nav ul li{
+        float: left;
+        padding:0px 3px;
+        position: relative;
+    }
+    .science-nav ul li>a{
+        padding:12px 10px;
+    }
+    .science-navfirst a{
+        color: #D0D0D0;
+    }
+    /* 字体颜色在导航条和注册两处 */
+    .science-navfirst a:hover{
+        color: #fff;
+    }
+    .science-nav ul li>a:hover{
+        background:#393939;
+    }
+    /* 选中的状态下没有下划线 */
+    .science-nav ul li>a:focus{
+        text-decoration:none;
+    }
+    .grow-up{
+        width:8px;
+        height:8px;
+        border-bottom:4px solid #85C155;
+        border-top:4px solid transparent;
+        border-left:4px solid transparent;
+        border-right:4px solid transparent;
+        position: absolute;
+        left:50%;
+        bottom:0px;
+        margin-left:-4px;
+        display:none;
+    }
+    /* 更多 */
+    .nav-others{
+        width:80px;
+        border: 1px solid #E0E0E0;
+        background:#fff;
+        position: absolute;
+        margin-left:-23px;
+        display: none;
+    }
+    .nav-others>a{
+        display: block;
+        line-height: 28px;
+        padding:0px 8px;
+        color: #000;
+
+    }
+    .nav-others>a:hover{
+        background:#E0E0E0;
+        color: #666;
+    }
+    .form-search{
+        float: right;
+        margin-left:18px;
+        padding-top:5px;
+    }
+    .search-p{
+        background: white;
+        height:30px;
+    }
+    .search{
+        height:21px;
+        width:239px;
+        border:none;
+        padding-left:6px;
+        vertical-align: 5px;
+        outline:none;
+    }
+    /* input标签的图标 */
+    .icon-search{
+        display: inline-block;
+        width:20px;
+        height:19px;
+        background:url("images/icon.png");
+        background-position: 0px -53px;
+        cursor: pointer;
+    }
+    .icon-search:hover{
+        background-position:0px -97px;
+    }
+    /* 首页的图标 */
+    .science-nav .icon-home{
+        display: inline-block;
+        width:18px;
+        height:18px;
+        vertical-align: middle;
+        background:url("images/icon.png");
+    }
+    /* 登录 */
+    .science-login>a:hover{
+        text-decoration: underline;
+    }
+    .science-login{
+        float: right;
+    }
+    .science-login>a{
+        padding:0 16px;
+    }
+    .science-login .split{
+        color: #666;
+    }
+    /* 第二条导航 */
+    .science-navsecond{
+        /*overflow: hidden;*/
+        border-bottom:1px solid #efefef;
+        -webkit-box-shadow: 0px 2px 4px #efefef;
+        -moz-box-shadow: 0px 2px 4px #efefef;
+        box-shadow: 0px 2px 4px #efefef;
+        padding-top:39px;
+        height:128px;
+    }
+    .science-navsecondmain{
+        max-width:1000px;
+        margin:0 auto;
+        padding:3px 0;
+        margin-bottom:10px;
+        /*overflow: hidden;*/
+    }
+    .science-navsecondmain .kex-logo{
+        margin:13px 0 0 -5px;
+    }
+    .posi-button{
+        position: absolute;
+        left:88%;
+        margin-top:25px;
+        border:none;
+    }
+    /* 科学人 LOGO */
+    .kex-logo img{
+        width:100px;
+        height:33px;
+    }
+    /* 点击按钮时的导航条 */
+    .blocknav{
+        width:300px;
+        height:215px;
+        background:white;
+        position:absolute;
+        right:0;
+        top:85px;
+        box-shadow:-2px 2px 2px #d6d6d6;
+        z-index:69;
+    }
+    /* 导航条的 ul */
+    .kex-nav{
+        float: left;
+        margin-top: 32px;
+        margin-left:3px;
+        font-size:16px;
+    }
+
+    .show-kexnavli{
+        margin:0 73px 9px 0;
+    }
+    .kex-nav li{
+        float: left;
+        padding:0 14px;
+    }
+    .kex-nav li>a{
+        /*padding:0px 21px;*/
+        padding:0px;
+        color: #666;
+    }
+    .collapse .kex-nav li>a:hover{
+        color: #46b6b6;
+    }
+    .bk-default{
+        background-color: transparent;
+        border-color:white;
+    }
+    .click-button{
+        position: absolute;
+        right:-19px;
+    }
+    .containe{
+        width:1000px;
+        margin:30px auto 0;
+    }
+    .article-list{
+        border:1px solid #efefef;
+        border-bottom:none;
+        overflow:hidden;
+        padding-bottom:90px;
+        position: relative;
+        height:2820px;
+    }
+    .article{
+        float: left;
+        width:333px;
+        border:1px solid #efefef;
+        padding:25px 20px 23px;
+    }
+    .article>a{
+
+    }
+    .label{
+        padding:1px 4px;
+        font-size:13px;
+        margin-right:8px;
+    }
+    .label-green{
+        background:#91dbd5;
+    }
+    .label-grey{
+        background:#d6d6d6;
+    }
+    .grow-angle{
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*right: -10px;*/
+        /*border-top: 9px solid transparent;*/
+        /*border-bottom: 9px solid transparent;*/
+        /*border:5px dashed transparent;*/
+    }
+    .label .grow-angle{
+        border-left-color: #91dbd5;
+    }
+    .article-title a{
+        font-size:19px;
+        color: #000;
+    }
+    .article-title a:hover{
+        text-decoration:underline;
+    }
+    .article-info{
+        padding:2px 0 10px;
+    }
+    .article-info,
+    .num{
+        color:#b8b8b8;
+    }
+    .article-author{
+        margin-right:21px;
+        color: #46b6b6;
+    }
+    .split{
+        color:#f5f5f5;
+    }
+    .article-conment{
+        float: right;
+    }
+    .article-img{
+        display:inline-block;
+        position:relative;
+    }
+    .article-img img{
+        width:292px;
+        height:264px;
+    }
+    .article-img>b{
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .article-summary{
+        margin-top:9px;
+    }
+    .article-hot{
+        width:332px;
+        float:left;
+    }
+    .article-hot>a{
+        display:block;
+        background:#f4f6f6;
+        text-align: center;
+        padding:20px 0;
+        font-size:20px;
+
+    }
+    .about{
+        color: #76d0d9;
+    }
+    .article-hot .about:hover{
+        color:#76d0d9;
+        text-decoration:underline;
+    }
+    .article-hot .toug{
+        color: #61b9f9;
+        margin:10px 0;
+    }
+    .article-hot .toug:hover{
+        color:#61b9f9;
+        text-decoration:underline;
+    }
+    .toug>.already{
+        display:inline-block;
+        width:100%;
+        font-size:14px;
+        color:#0e0c0f;
+        margin:0px;
+    }
+    .refresh{
+        width:100%;
+        height:16px;
+        position:absolute;
+        bottom:30px;
+        text-align:center;
+        display:none;
+    }
+    .refresh>img{
+        display: block;
+        margin:0 auto;
+    }
+</style>
+</head>
+<body>
+<div class="container-fluid cont-wid">
+    <div class="header-wrap">
+        <div class="science-wrap-navfirst">
+            <div class="science-navfirst">
+                <div class="science-nav">
+                    <ul>
+                        <li><a href="index.html">
+                            <span class="icon-home"></span>
+                            首页
+                        </a></li>
+                        <li><a href="#">
+                            科学人
+                            <b class="grow-up" style="display:block;"></b>
+                        </a></li>
+                        <li><a href="#">
+                            小组
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li><a href="#">
+                            问答
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li><a href="#" class="hide-li">
+                            <b class="grow-up"></b>
+                            MOOC
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li><a href="#" class="hide-li">
+                            在行
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li><a href="#" class="hide-li">
+                            万有市集
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li><a href="#" class="hide-li">
+                            十五言
+                            <b class="grow-up"></b>
+                        </a></li>
+                        <li class="navli-last hide-li">
+                            <a href="#" onclick="others()">更多
+                                <span class="caret"></span>
+                            </a>
+                            <div class="nav-others">
+                                <a href="">分答</a>
+                                <a href="">果壳精选</a>
+                                <a href="">任意门</a>
+                                <a href="">果壳微信号</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-search" role="form">
+                        <p class="search-p">
+                            <input type="text" class="glyphicon-search search">
+                            <span class="icon-search"></span>
+                        </p>
+                    </form>
+                </div>
+                <div class="science-login">
+                    <a href="login.html">登录</a>
+                    <span class="split">|</span>
+                    <a href="register.html">注册</a>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+        <div class="science-navsecond">
+            <div class="science-navsecondmain">
+                <nav class="navbar navbar-default bk-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle click-button posi-button"
+                                data-toggle="collapse" data-target="#navbar">
+                            <span class="sr-only"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="kexueren.html" class="navbar-brand kex-logo"><img src="images/kex.png" alt=""></a>
+                    </div>
+
+
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav kex-nav">
+                            <li><a href="#">热点</a></li>
+                            <li><a href="#">前沿</a></li>
+                            <li><a href="#">评论</a></li>
+                            <li><a href="#">专访</a></li>
+                            <li><a href="#">视觉</a></li>
+                            <li><a href="#">速读</a></li>
+                            <li><a href="#">谣言粉碎机</a></li>
+                            <li><a href="#">商业科技</a></li>
+                            <li><a href="#">学科</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="containe">
+        <div class="article-list">
+            <div class="article">
+                <a href="#" class="label label-green">热点
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">生物
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">​“我从没有想过，第一次见到活的穿山甲会是这样。”</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Ent</a>
+                    <span class="split">|</span>
+                    今天 11:39
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">8</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img">
+                    <img src="images/wu.jpeg" alt="">
+                    <b></b>
+                </a>
+                <p class="article-summary">一种动物和它背后的人的故事。</p>
+            </div>
+            <div class="article">
+                <a href="#" class="label label-green">热点
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">食物
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">撕不破还有腥臭味就是塑料做的？别再冤枉紫菜了</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">阮光锋</a>
+                    <span class="split">|</span>
+                    今天 12:06
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">7</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/zcai.jpeg" alt=""></a>
+                <p class="article-summary">紫菜撕不破，是塑料做的？不要被视频忽悠了。</p>
+            </div>
+            <div class="article-hot">
+                <a href="#" class="about">
+                    <img src="images/1.i-logo.png" alt="">
+                    关于我们
+                </a>
+                <a href="#" class="toug">
+                    <img src="images/flight-logo.png" alt="">
+                    我要投稿
+                    <p class="already">已有千位作者为科学人供稿</p>
+                </a>
+            </div>
+            <div class="article" style="position:absolute; left:666px;top:237px;">
+                <a href="#" class="label label-green">前沿
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">地学
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">关于第八大洲，你需要和不需要知道的一切？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">溯鹰</a>
+                    <span class="split">|</span>
+                    2017-02-18 18:06
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">20</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/zz.jpeg" alt=""></a>
+                <p class="article-summary">悲剧的新西兰人。就在这个周末，他们发现自己莫名其妙成第八大洲“西兰洲”的居民了。</p>
+            </div>
+            <div class="article" style="position:absolute;left:0;top:485px;">
+                <a href="#" class="label label-green">评论
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">工程
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">加州水坝危机：好好的一座坝怎么突然就出这么大的事儿？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">David A. Graham</a>
+                    <span class="split">|</span>
+                    2017-02-16 16:57
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">51</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/man.jpeg" alt=""></a>
+                <p class="article-summary">在干旱、气候变化和基础设施老化的共同作用下，灾难的阴影笼罩着奥罗维尔，约18.8万加利福尼亚居民被迫撤离。</p>
+            </div>
+            <div class="article" style="position:absolute;left:333px;top:505px;">
+                <a href="#" class="label label-green">评论
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">物理
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">到底什么是最美的科学公式？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">张双南</a>
+                    <span class="split">|</span>
+                    2017-02-17 11:55
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">34</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/math.jpeg" alt=""></a>
+                <p class="article-summary">到底谁选的“最美”才是真的“最美”？这些公式到底“美”在什么地方？物理学教授张双南用归纳、证实、证伪的研究方法，发现了审美的两个要素。</p>
+            </div>
+            <div class="article" style="position:absolute; left:666px;top:742px;">
+                <a href="#" class="label label-green">前沿
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">心理
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">为何有人能在网上多任务，有人却不行?</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Peggy Alexopoulou</a>
+                    <span class="split">|</span>
+                    2017-02-15 08:48
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">26</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/comp.jpeg" alt=""></a>
+                <p class="article-summary">说吧，你此刻开了几个网页？感觉崩溃吗？</p>
+            </div>
+            <div class="article" style="position:absolute;left:0;top:1010px;">
+                <a href="#" class="label label-green">前沿
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">医学
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">编辑生殖细胞基因？美国科学院首度松口！</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">冷月如霜</a>
+                    <span class="split">|</span>
+                    2017-02-15 16:31
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">29</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/yi.jpeg" alt=""></a>
+                <p class="article-summary">今日，隶属于美国国家科学院与美国国家医学科学院的一个委员会发布了《人类基因组编辑：科学、伦理与管理》（Human Genome Editing: Science, Ethics, and Governance）。在这份报告中，科学界首次松口，表露出支持编辑生殖细胞的态度。</p>
+            </div>
+            <div class="article" style="position:absolute;left:333px;top:1024px;">
+                <a href="#" class="label label-green">生物
+                    <span class="grow-angle"></span>
+                </a>
+
+                <h3 class="article-title">
+                    <a href="#">塞马尼鸡为什么那么黑？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Kat McGowan</a>
+                    <span class="split">|</span>
+                     2017-02-14 15:39
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">48</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/ji.jpeg" alt=""></a>
+                <p class="article-summary">它有黑肉黑骨，还有一颗乌黑的心。这种鸡的风靡再度说明一件事，人类就是喜欢长得酷炫的动物。</p>
+            </div>
+            <div class="article" style="position:absolute; left:666px;top:1227px;">
+                <a href="#" class="label label-green">评论
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">心理
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">最能提高工作效率的音乐，就是没有音乐</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Olga Khazan</a>
+                    <span class="split">|</span>
+                    2017-02-11 11:11
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">41</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/music.jpeg" alt=""></a>
+                <p class="article-summary">研究表明，对于大多数需要消耗认知资源的任务来说，任何声音都会影响表现。</p>
+            </div>
+            <div class="article" style="position:absolute;left:0;top:1595px;">
+                <a href="#" class="label label-green">生物
+                    <span class="grow-angle"></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">为什么不该在动物园投喂动物？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">倒挂的树懒</a>
+                    <span class="split">|</span>
+                    2017-02-13 21:21
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">33</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/monkey.jpeg" alt=""></a>
+                <p class="article-summary">那些蔫胡萝卜、白菜帮子、干挂面……都拿回家当晚饭吧。别来坑动物了。</p>
+            </div>
+            <div class="article" style="position:absolute;left:333px;top:1523px;">
+                <a href="#" class="label label-green">评论
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-green">科幻
+                    <span class="grow-angle"></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#">为何《侠盗一号》的技术这么不时髦？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Bryan Alexander</a>
+                    <span class="split">|</span>
+                    2017-01-12 21:50
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">56</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/jq.jpg" alt=""></a>
+                <p class="article-summary">这部电影里的机器看起来还停留在20世纪，这是有原因的。</p>
+            </div>
+            <div class="article" style="position:absolute; left:666px;top:1732px;">
+                <a href="#" class="label label-green">前沿
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">生物
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#"> 记忆也能被人工剪辑？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Alulull</a>
+                    <span class="split">|</span>
+                    昨天15:00
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">13</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/head.jpeg" alt=""></a>
+                <p class="article-summary">能让小鼠怕糖水就像怕电击吗？能让小鼠在建立起这种恐惧后，又忘掉这种恐惧吗？Science上的一篇新论文找到了记忆间关联的神经机制。</p>
+            </div>
+            <div class="article" style="position:absolute;left:333px;top:2028px;">
+                <a href="#" class="label label-green">评论
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-green">医学
+                    <span class="grow-angle"></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#"> 三亲婴儿：线粒体移植可能有哪些风险？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Jill Neimark</a>
+                    <span class="split">|</span>
+                    昨天12:52
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">13</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/huax.jpeg" alt=""></a>
+                <p class="article-summary">线粒体移植手术能阻断线粒体疾病从母亲遗传给婴儿。但有时即使进行了移植，为什么疾病还是卷土重来？</p>
+            </div>
+            <div class="article" style="position:absolute;left:0;top:2074px;">
+                <a href="#" class="label label-green">心理
+                    <span class="grow-angle"></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#"> 德国人准时，墨西哥人热情，这些国籍刻板印象有根据吗？</a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">PanSci</a>
+                    <span class="split">|</span>
+                    今天11:22
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">5</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/child.jpeg" alt=""></a>
+                <p class="article-summary">一个人来自哪个国家，就会有什么样的特质吗？</p>
+            </div>
+            <div class="article" style="position:absolute; left:666px;top:2251px;">
+                <a href="#" class="label label-green">前沿
+                    <span class="grow-angle"></span>
+                </a>
+                <a href="#" class="label label-grey">评论
+                    <span></span>
+                </a>
+                <a href="#" class="label label-grey">电子
+                    <span></span>
+                </a>
+                <h3 class="article-title">
+                    <a href="#"> 科学人对话IEEE：我等的AI , 它在多远的未来？
+                         </a>
+                </h3>
+                <div class="article-info">
+                    <a href="#" class="article-author">Edson Prestes 周志华</a>
+                    <span class="split">|</span>
+                    昨天11:06
+                    <a href="#" class="article-conment">
+                        <span class="icon ion-android-textsms"></span>
+                        <span class="num">15</span>
+                    </a>
+                </div>
+                <a href="#" class="article-img"><img src="images/hand.jpeg" alt=""></a>
+                <p class="article-summary">科学人对话电气与电子工程师学会（IEEE）的人工智能专家，和他们聊了聊崛起的AI。</p>
+            </div>
+
+            <div class="refresh">正在加载中...<img src="images/de.ajax-loader.gif" alt=""></div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+<script>
+//$(document).ready(function(){
+
+    // 更多导航
+    var cur = 0;
+    var curr = cur;
+    function others(){
+        if(curr==0) {
+            $('.nav-others').css('display','block');
+            //alert(curr);
+            curr+=1;
+        }
+        else if(curr==1){
+            //alert(curr);
+            $('.nav-others').css('display','none');
+            curr = 0;
+        }
+    };
+    // 导航条的小三角
+    $('.science-nav ul li').click(function(){
+        var liindex = $(this).index();
+        var upindex = liindex - 1;
+        $('.grow-up').eq(upindex).css('display','block');
+        $(this).siblings('li').find('.grow-up').css('display','none');
+    });
+
+
+    //当 innerWidth 小于一定值时某些元素隐藏
+    $(window).resize(function(){
+        var outerW = $(window).outerWidth();
+        var hideli = document.getElementsByClassName('hide-li');
+        if(outerW<975){
+            //隐藏 form-search
+        $('.form-search').css('display','none');
+            //console.log(hideli);
+
+            // 隐藏 登录注册
+            if(outerW<700){
+                $('.science-login').css('display','none');
+
+                // 隐藏 导航条的最后几个li
+                if(outerW<599){
+                    $(hideli).css('display','none');
+                }else{
+                    $(hideli).css('display','inline');
+                }
+            }else{
+                $('.science-login').css('display','block');
+            }
+        }
+        else if(outerW>975){
+            $('.form-search').css('display','block');
+        }
+    });
+
+    // 点击右侧导航按钮时出现的导航条
+        var current = cur;
+    $('.posi-button').click(function(){
+        if(current==0){
+
+            $('.kex-nav').css('marginTop','1');
+            $('#navbar').addClass('blocknav');
+            $('.kex-nav li').addClass('show-kexnavli');
+            current+=1;
+        }
+        else if(current==1){
+            $('.kex-nav').css('marginTop','23');
+            $('#navbar').removeClass('blocknav');
+            $('.kex-nav li').removeClass('show-kexnavli');
+            current = 0;
+        }
+
+    });
+    // 下滑到最底时加载
+    $(window).scroll(function(){
+        var scrollT = $(document).scrollTop();
+        var documentH = $(document).height();
+        var clientH = $(window).height();
+        //console.log(scrollT+'a');
+        //console.log(clientH+'b');
+        if(scrollT + clientH +20 >= documentH){
+            $('.refresh').css('display','block');
+        }else{
+            $('.refresh').css('display','none');
+        }
+
+    });
+
+    //在该页面浏览到一半时，返回首页面再次回本页面，会停留在你之前浏览的位置，不用再重新滚动滑轮，这是使用本地存储sessionStorage
+    var offsetTop;
+    $(window).scroll(function(){
+        if($(document).scrollTop!=0){  sessionStorage.setItem("offsetTop",$(window).scrollTop());
+    //保存滚动位置
+        }
+    });
+    // onload时，取出并滚动到上次保存的位置
+    window.onload=function(){
+        var _offset = sessionStorage.getItem("offsetTop");
+        $(window).scrollTop(_offset);
+    };
+
+
+
+
+//})
+
+
+// 小三角的问题 使用siblings()时的问题，要配合find()使用
+// $(window).resize(fuction(){})窗口宽度变化时自动刷新页面  outerWidth()方法
+// 去掉 a标签的子元素的下划线(去掉子元素下划线) 将子元素设置为 display:inline-block即可;
+// 换行方式： 设置宽度，占满 还有设置display 和使用 hr 标签
+
+//Jquery中click事件必须放在$(document).ready(function(){})之中才起作用，为什么？
+//代码
+//    $(document).ready(function(){
+//        $("#closeBtn").click(function(){
+//            $("#share").hide();
+//        });
+//    });
+//    如果只写
+//    $("#closeBtn").click(function(){
+//        $("#share").hide();
+//    });
+//    则该函数不起作用，这是为什么？
+
+//    $(document).ready
+//    是文档(整个页面加载成功)加载完毕的意思
+//
+//    在文档加载之前，读取dom元素就是空
+//    会报错。就没有效果l
+
+//        $(document).ready(...) 和 window.onload 事件虽然具有类似的效果，但是，它们在触发操作的时间上存在着微妙的差异。
+//
+//        window.onload
+//        当一个文档完全下载到浏览器中时，会触发 window.onload 事件。这意味着页面上的全部元素对 javascript 而言都是可以访问的，
+//        这种情况对编写功能性的代码非常有利，因为无需考虑加载的次序。
+//
+//        $(document).ready()
+//        通过 $(document).ready() 注册的事件处理程序，则会在 DOM 完全就绪并可以使用时调用。虽然这也意味着所有元素对脚本而言都是可以访问的，
+//        但是，缺不意味着所有关联的文件都已经下载完毕。换句话说，当 HTML 下载完成并解析为 DOM 树之后，代码就可以运行。
+
+
+</script>
+</html>
+
