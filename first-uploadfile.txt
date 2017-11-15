@@ -1,0 +1,16 @@
+1.默认安装Git
+2.找到 git bash.exe,弹出窗口
+3.输入 ：
+	git config --global user.name "账号名"
+	git config --global user.email "email"
+
+4.创建版本库：
+ 先指定目录 cd D: -> cd aoyolo -> mkdir yamax ->pwd
+pwd 是显示当前目录
+
+5.将目录变成git可以管理的仓库
+直接 git init  之后目录会出现 .git文件
+
+使用 git add readme.txt    ==将文件添加到暂存区
+
+git commit   ==将文件提交到仓库
