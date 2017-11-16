@@ -1,8 +1,44 @@
-1.默认安装Git
+本地git仓库：
+1.默认安装Git ， "并且创建一个目录作为git本地仓库"
 2.找到 git bash.exe,弹出窗口
-3.输入 ：
-	git config --global user.name "账号名"
-	git config --global user.email "email"
+命令： 进入磁盘(cd f:)   ->  进入目录(cd 目录名称)
+
+3. 在这个目录下   git init  使这个目录变成git仓库 ，这时目录会有.git隐藏文件
+到此--本地仓库已弄好。
+
+
+远程仓库：
+1.到GitHub官网注册一个账号，在账号设置中进入 ssh keys栏， 点击new一个SSH KEY
+ 随意填title ，接下来是生成 key
+
+2.回到安装Git里的 git bash.exe 
+设置git 的user name 和 email
+ git config --global user.name "账号名"
+ git config --global user.email "email"
+ 输入 ssh-keygen -t rsa -C "注册时的邮箱" 生成密钥
+
+这时会让你输入保存密钥文件的路径，注意现在cd到哪个目录了，也就是当前所在文件夹 
+
+命令行里面有提示 密钥文件"id_rsa.pub" 存放在哪
+
+然后将文件里面的内容弄到GitHub里面的密钥输入框中
+
+3.在GitHub里面创建一个仓库
+
+4.在本地创建的目录里创建一个文本
+ git add (git add .) 添加到暂存区
+ git commit -m "注释" 提交
+
+5.上传本地仓库到远程仓库去
+ git remote add origin https://github.com/yxhlance/mycode.git
+ git push -u origin master
+
+
+
+
+
+1.输入 ：
+	
 
 4.创建版本库：
  先指定目录 cd D: -> cd aoyolo -> mkdir yamax ->pwd
@@ -14,5 +50,3 @@ pwd 是显示当前目录
 使用 git add readme.txt    ==将文件添加到暂存区
 
 git commit   ==将文件提交到仓库
-
-111
